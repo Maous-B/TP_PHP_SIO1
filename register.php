@@ -8,33 +8,50 @@
         $nom_prof = $_POST['nom_prof'];
         $prenom_prof = $_POST['prenom_prof'];
         $adresse_mail = $_POST['adresse_mail'];
-        $mot_de_passe = sha1($_POST['mot_de_passe']);
-
-        if(!empty($id_numen) && !empty($nom_prof) && !empty($prenom_prof) && !empty($adresse_mail) && !empty($mot_de_passe)){
-
-
-            include "./ConnexionMySQL.php";
-            global $db;
-
-            $c = $db->prepare("SELECT ADRESSE_MAIL FROM professeurs WHERE ADRESSE_MAIL = ?");
-            $c->execute([$adresse_mail]);
-            $result = $c->rowCount();
+        $num_telephone = $_POST['num_telephone'];
+        $mot_de_passe = $_POST['mot_de_passe'];
+        $c_mot_de_passe = $_POST['c_mot_de_passe'];
 
 
-            if($result == 0){
-                $q = $db->prepare("INSERT INTO professeurs(ID_NUMEN, NOM_PROF, PRENOM_PROF, ADRESSE_MAIL, MOT_DE_PASSE) VALUES(?, ?, ?, ?, ?)");
-                $q->bindParam($id_numen, $nom_prof, $prenom_prof, $adresse_mail, $mot_de_passe);
-                $q->execute([$id_numen, $nom_prof, $prenom_prof, $adresse_mail, $mot_de_passe]);  
-                echo '<script>alert("Le compte a été créée")</script>';
+        if(!empty($id_numen) && !empty($nom_prof) && !empty($prenom_prof) && !empty($adresse_mail) && !empty($num_telephone) && !empty($mot_de_passe) && !empty($c_mot_de_passe)){
+
+            if($mot_de_passe == $c_mot_de_passe){
+                include "./ConnexionMySQL.php";
+                global $db;
+
+                $c = $db->prepare("SELECT ADRESSE_MAIL FROM professeurs WHERE ADRESSE_MAIL = ?");
+                $c->execute([$adresse_mail]);
+                $result = $c->rowCount();
+
+
+                $options = ['cost' => 12];
+                $hashpass = password_hash($mot_de_passe, PASSWORD_BCRYPT, $options);
+
+
+                if($result == 0){
+                    $q = $db->prepare("INSERT INTO professeurs(ID_NUMEN, NOM_PROF, PRENOM_PROF, ADRESSE_MAIL, NUM_TELEPHONE, MOT_DE_PASSE) VALUES(?, ?, ?, ?, ?, ?)");
+                    $q->bindParam($id_numen, $nom_prof, $prenom_prof, $adresse_mail, $num_telephone, $hashpass);
+                    $q->execute([$id_numen, $nom_prof, $prenom_prof, $adresse_mail, $num_telephone, $hashpass]);  
+                    $message = "Le compte a été créée avec succès.";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                }
+                else{
+                    $message = "Un compte avec cette adresse mail existe déjà.";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                }
             }
-            else{
-                echo '<script>alert("Un compte avec cette adresse mail existe déjà.")</script>';
+
+            else
+            {
+                $message = "Les deux mots de passe sont incorrect.";
+                echo "<script type='text/javascript'>alert('$message');</script>";
             }
             
         }
         
         else{
-            echo '<script>alert("Les champs sont vides")</script>';
+            $message = "Les champs sont vides.";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
     
 
