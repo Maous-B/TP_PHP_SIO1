@@ -50,6 +50,7 @@
     <title>S'enregistrer : Epreuves CCF</title>
     <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
     <div class="wrapper">
         <a href="https://www.enc-bessieres.org/"><img src="./logo_enc.png"></a>

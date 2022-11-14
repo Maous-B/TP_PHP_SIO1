@@ -7,30 +7,28 @@
         $mot_de_passe = sha1($_POST['mot_de_passe']);
 
         if(!empty($adresse_mail) && !empty($mot_de_passe)){
-
-
             include "./ConnexionMySQL.php";
             global $db;
 
-            $password_check = $db->prepare("SELECT MOT_DE_PASSE FROM professeurs WHERE MOT_DE_PASSE = ?");
-            $password_check->execute([$mot_de_passe]);
-            $result = $c->rowCount();
+            $q = $db->prepapre("SELECT * FROM professeurs WHERE ADRESSE_MAIL = ?");
+            $q->execute([$adresse_mail]);
+            $result = $q->fetch();
 
+            if($result == true)
+            {
+                if(password_verify($mot_de_passe, $result['mot_de_passe']))
+            }
+            else
+            {
+                $message = "Veuillez remplir l'ensemble des champs";
+                echo "<script type='text/javascript'>alert('$message');</script>";
+            }
 
-            if($result != 0){
-                $q = $db->prepare("INSERT INTO professeurs(ID_NUMEN, NOM_PROF, PRENOM_PROF, ADRESSE_MAIL, MOT_DE_PASSE) VALUES(?, ?, ?, ?, ?)");
-                $q->bindParam($id_numen, $nom_prof, $prenom_prof, $adresse_mail, $mot_de_passe);
-                $q->execute([$id_numen, $nom_prof, $prenom_prof, $adresse_mail, $mot_de_passe]);  
-                echo '<script>alert("Le compte a été créée")</script>';
-            }
-            else{
-                echo '<script>alert("Un compte avec cette adresse mail existe déjà.")</script>';
-            }
-            
         }
         
         else{
-            echo '<script>alert("Les champs sont vides")</script>';
+            $message = "Veuillez remplir l'ensemble des champs";
+            echo "<script type='text/javascript'>alert('$message');</script>";
         }
     
 
@@ -51,10 +49,10 @@
     <h1>Connexion</h1>
     <form action="" method="POST">
         Adresse mail :
-        <input name="adresse_mail" type="text" placeholder="exemple@enc-bessieres.org">
+        <input name="adresse_mail" id="adresse_mail" type="text" placeholder="exemple@enc-bessieres.org">
         <br>
         Mot de passe :
-        <input name="mot_de_passe" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+        <input name="mot_de_passe" id="mot_de_passe" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
         <br>
         <input type="submit" name="soumettre" value="Se connecter" />
     </form>
