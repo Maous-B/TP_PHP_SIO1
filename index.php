@@ -12,8 +12,8 @@
             include "./ConnexionMySQL.php";
             global $db;
 
-            $c = $db->prepare("SELECT MOT_DE_PASSE FROM professeurs WHERE MOT_DE_PASSE = ?");
-            $c->execute([$mot_de_passe]);
+            $password_check = $db->prepare("SELECT MOT_DE_PASSE FROM professeurs WHERE MOT_DE_PASSE = ?");
+            $password_check->execute([$mot_de_passe]);
             $result = $c->rowCount();
 
 
