@@ -17,6 +17,10 @@
             if($result == true)
             {
                 if(password_verify($mot_de_passe, $result['mot_de_passe']))
+                {
+                    $message = "Veuillez remplir l'ensemble des champs";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
+                }
             }
             else
             {
