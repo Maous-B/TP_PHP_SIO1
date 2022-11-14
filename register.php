@@ -72,7 +72,7 @@
     <div class="wrapper">
         <a href="https://www.enc-bessieres.org/"><img src="./logo_enc.png"></a>
     <h1>S'enregistrer</h1>
-    <form method="POST" action="register.php">
+    <form method="POST" action="">
         ID Numen :
         <input name="id_numen" id="id_numen" type="text" placeholder="ex: ABC123ABDTRDA">
         <br>
@@ -85,8 +85,14 @@
         Mail : 
         <input name="adresse_mail" id="adresse_mail" type="text" placeholder="exemple@enc-bessieres.org">
         <br>
+        N° Téléphone :
+        <input name="num_telephone" id="num_telephone" type="text" placeholder="ex: 01 23 45 67 89">
+        <br>
         Mot de passe :
         <input name="mot_de_passe" id="mot_de_passe" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
+        <br>
+        Confirmation du mot de passe :
+        <input name="c_mot_de_passe" id="c_mot_de_passe" type="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;">
         <br>
         <input type="submit" id="soumettre" name="soumettre" value="S'enregistrer" />
     </form>
