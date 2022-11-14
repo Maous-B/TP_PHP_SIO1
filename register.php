@@ -72,7 +72,7 @@
         <br>
         <input type="submit" id="soumettre" name="soumettre" value="S'enregistrer" />
     </form>
-    Vous avez un compte? Retournez vers la <a href="index.html">page de connexion</a>
+    Vous avez un compte? Retournez vers la <a href="index.php">page de connexion</a>
     </div>
 </body>
 </html>
