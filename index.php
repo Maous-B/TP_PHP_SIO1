@@ -18,8 +18,14 @@
             {
                 if(password_verify($mot_de_passe, $result['mot_de_passe']))
                 {
-                    $message = "Veuillez remplir l'ensemble des champs";
+                    $message = "Mot de passe correct. Redirection en cours...";
                     echo "<script type='text/javascript'>alert('$message');</script>";
+                    header('Location: http://www.example.com/');
+                    exit;
+                }
+                else
+                {
+                    echo "Mot de passe incorrect.";
                 }
             }
             else
