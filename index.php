@@ -25,7 +25,8 @@
                 }
                 else
                 {
-                    echo "Mot de passe incorrect.";
+                    $message = "Mot de passe incorrect.";
+                    echo "<script type='text/javascript'>alert('$message');</script>";
                 }
             }
             else
