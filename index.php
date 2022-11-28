@@ -14,7 +14,6 @@
             $q = $db->prepare("SELECT * FROM professeurs WHERE ADRESSE_MAIL = ?");
             $q->execute([$adresse_mail]);
             $result = $q->fetch();
-            print_r($result) ;
             if($result == true)
             {
                 if(password_verify($mot_de_passe, $result['mot_de_passe']))
