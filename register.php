@@ -29,7 +29,8 @@
 
 
                 if($result == 0){
-                    $q = $db->prepare("INSERT INTO professeurs(ID_NUMEN, NOM_PROF, PRENOM_PROF, ADRESSE_MAIL,NUM_TELEPHONE, MOT_DE_PASSE) VALUES(?, ?, ?, ?, ?, ?)");
+                    $q = $db->prepare("INSERT INTO professeurs(ID_NUMEN, NOM_PROF, PRENOM_PROF, ADRESSE_MAIL, NUM_TELEPHONE, MOT_DE_PASSE) VALUES(?, ?, ?, ?, ?, ?)");
+                    //$q = $db->prepare("INSERT INTO professeurs(ID_NUMEN, NOM_PROF, PRENOM_PROF, ADRESSE_MAIL,NUM_TELEPHONE, MOT_DE_PASSE) VALUES(:id_numen, :nom_prof, :prenom_prof, :adresse_mail, :num_telephone, :mot)");
                     /* $q->bindParam(1,$id_numen,PDO::PARAM_STR);
                     $q->bindParam(2,$nom_prof,PDO::PARAM_STR);
 
@@ -43,7 +44,7 @@
                     */
 
 
-                    var_dump( $num_telephone);
+                    //var_dump( $num_telephone);
                     
                     $q->execute([$id_numen, $nom_prof, $prenom_prof, $adresse_mail, $num_telephone, $hashpass]);  
                     $message = "Le compte a été créée avec succès.";
