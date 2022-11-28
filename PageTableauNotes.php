@@ -42,9 +42,6 @@
                         <td><input name="date_epreuve" placeholder="Date"></td>
                     </tr>
                 </tbody>
-                <input type="button" class="add" value="Ajouter une ligne">
-                <br>
-                <input type="button" class="add" value="Supprimer une ligne">
             </table>
             
         </div>
