@@ -10,7 +10,7 @@
             include "./ConnexionMySQL.php";
             global $db;
 
-            $q = $db->prepapre("SELECT * FROM professeurs WHERE ADRESSE_MAIL = ?");
+            $q = $db->prepare("SELECT * FROM professeurs WHERE ADRESSE_MAIL = ?");
             $q->execute([$adresse_mail]);
             $result = $q->fetch();
 
