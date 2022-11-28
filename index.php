@@ -4,7 +4,8 @@
         extract($_POST);
 
         $adresse_mail = $_POST['adresse_mail'];
-        $mot_de_passe = sha1($_POST['mot_de_passe']);
+        // $mot_de_passe = sha1($_POST['mot_de_passe']);
+        $mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_ARGON2ID);
 
         if(!empty($adresse_mail) && !empty($mot_de_passe)){
             include "./ConnexionMySQL.php";
@@ -13,7 +14,7 @@
             $q = $db->prepare("SELECT * FROM professeurs WHERE ADRESSE_MAIL = ?");
             $q->execute([$adresse_mail]);
             $result = $q->fetch();
-
+            print_r($result) ;
             if($result == true)
             {
                 if(password_verify($mot_de_passe, $result['mot_de_passe']))
@@ -26,7 +27,7 @@
                 else
                 {
                     $message = "Mot de passe incorrect.";
-                    echo "<script type='text/javascript'>alert('$message');</script>";
+                    echo "<script type='text/javascript'>alert('$message avec $mot_de_passe');</script>";
                 }
             }
             else

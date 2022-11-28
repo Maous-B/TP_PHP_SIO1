@@ -22,10 +22,7 @@
                 $c = $db->prepare("SELECT ADRESSE_MAIL FROM professeurs WHERE ADRESSE_MAIL = ?");
                 $c->execute([$adresse_mail]);
                 $result = $c->rowCount();
-
-
-                $options = ['cost' => 12];
-                $hashpass = password_hash($mot_de_passe, PASSWORD_BCRYPT, $options);
+                $hashpass = password_hash($mot_de_passe, PASSWORD_ARGON2ID);
 
 
                 if($result == 0){
