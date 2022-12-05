@@ -1,0 +1,2 @@
+#INSERT INTO filiere_bts(CODE_BTS, LIBELLE_BTS, ANNEE_CONCERNEE) VALUES('SIO', 'Service Informatique aux Organisations', '2022/2024')
+INSERT INTO CANDIDAT()
