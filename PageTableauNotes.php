@@ -1,8 +1,3 @@
-<?php
-
-?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,12 +29,24 @@
                         <td>Note</td>
                     </tr>
                     <tr>
-                        <td><input name="code_filiere" placeholder="Code filière"></td>
+                        <!--<td><select name="formations[]" id="formation-select">
+                            <option value="">Code filière</option>
+                            <option value="SIO">Services Informatiques aux Organisations (SIO)</option>
+                            <option value="CI">Commerce International (CI)</option>
+                            <option value="COM">Communication (COM)</option>
+                            <option value="CG">Comptabilité et Gestion (CG)</option>
+                            <option value="NDRC">Négociation Digitalisation de la Relation Client (NDRC)</option>
+                            <option value="PI">Professions immobilières (PI)</option>
+                            <option value="SAM">Support à l'Action Managériale (SAM)</option>
+                            <option value="TOU">Tourisme (TOU)</option>
+                        </select></td>
                         <td><input name="numero_eleve" placeholder="Numéro élève"></td>
                         <td><input name="nom_eleve" placeholder="Nom candidat"></td>
                         <td><input name="prenom_eleve" placeholder="Prénom candidat"></td>
                         <td><input name="code_epreuve" placeholder="Code épreuve"></td>
                         <td><input name="date_epreuve" placeholder="Date"></td>
+                        <td><input type="submit" id="soumettre" name="soumettre" value="Envoyer les notes"></td>
+                        -->
                     </tr>
                 </tbody>
             </table>
