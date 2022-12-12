@@ -20,6 +20,18 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                <select name="formation" id="formation">
+                    <option value="">-- Choisissez votre formation --</option>
+                    <option value="SIO">Services Informatiques aux Organisations</option>
+                    <option value="CI">Commerce International</option>
+                    <option value="COM">Communication</option>
+                    <option value="CG">Comptabilité et Gestion</option>
+                    <option value="NDRC">Négociation Digitalisation de la Relation Client</option>
+                    <option value="PI">Professions immobilières</option>
+                    <option value="SAM">Support à l'Action Managériale</option>
+                    <option value="TOU">Tourisme</option>
+                </select>
                     <tr>
                         <td>Code Fillière</td>
                         <td>Numéro Eleve</td>
