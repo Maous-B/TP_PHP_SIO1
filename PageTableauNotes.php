@@ -1,18 +1,52 @@
 
 <!DOCTYPE html>
+<?php
+
+    if(isset($_POST['soumettre'])){
+
+        extract($_POST);
+
+        $section_bts = $_POST['section'];
+
+        #print_r($section_bts);
+
+        foreach($section_bts as $indice => $section){
+
+            include './ConnexionMySQL.php';
+            global $db;
+            $q = $db->prepare("SELECT f.CODE_BTS, c.NUMERO_ELEVE, c.NOM_CANDIDAT 
+            FROM candidat c
+            INNER JOIN filiere_bts f
+            ON c.fk_id_bts = f.id_bts
+            WHERE f.CODE_BTS = :code_bts");
+            $q->bindParam(':code_bts', $section);
+            $q->execute();
+            $donnees = $q->fetch();
+            
+            $nom_candidat = $donnees['NOM_CANDIDAT'];
+            $clef_eleve = $donnees['CLEF_ELEVE'];
+            
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            
+        }
+
+
+    }
+
+?>
+
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Epreuves CCF : Saisie de notes</title>
     <link href="./style.css" rel="stylesheet" type="text/css">
-
 </head>
+
+
 <body>
-    <FORM ACTION="" METHOD="POST">
+    <form action="PageTableauNotes.php" method="POST">
         <div class="wrapper">
-        <form method="POST" action="" id="mon_formulaire"></form>
             <table>
                 <thead>
                     <tr>
@@ -21,7 +55,7 @@
                 </thead>
                 <tbody>
 
-                <select name="formation" id="formation">
+                <select name="section[]" id="formation">
                     <option value="">-- Choisissez votre formation --</option>
                     <option value="SIO">Services Informatiques aux Organisations</option>
                     <option value="CI">Commerce International</option>
@@ -32,37 +66,21 @@
                     <option value="SAM">Support à l'Action Managériale</option>
                     <option value="TOU">Tourisme</option>
                 </select>
+
+                <input type="submit" name="soumettre" value="Importer" />
                     <tr>
-                        <td>Code Fillière</td>
+                        <td>Code filière</td>
                         <td>Numéro Eleve</td>
                         <td>Nom Eleve</td>
-                        <td>Code épreuve</td>
+                        <td>Code Epreuve</td>
                         <td>Date</td>
                         <td>Note</td>
                     </tr>
                     <tr>
-                        <!--<td><select name="formations[]" id="formation-select">
-                            <option value="">Code filière</option>
-                            <option value="SIO">Services Informatiques aux Organisations (SIO)</option>
-                            <option value="CI">Commerce International (CI)</option>
-                            <option value="COM">Communication (COM)</option>
-                            <option value="CG">Comptabilité et Gestion (CG)</option>
-                            <option value="NDRC">Négociation Digitalisation de la Relation Client (NDRC)</option>
-                            <option value="PI">Professions immobilières (PI)</option>
-                            <option value="SAM">Support à l'Action Managériale (SAM)</option>
-                            <option value="TOU">Tourisme (TOU)</option>
-                        </select></td>
-                        <td><input name="numero_eleve" placeholder="Numéro élève"></td>
-                        <td><input name="nom_eleve" placeholder="Nom candidat"></td>
-                        <td><input name="prenom_eleve" placeholder="Prénom candidat"></td>
-                        <td><input name="code_epreuve" placeholder="Code épreuve"></td>
-                        <td><input name="date_epreuve" placeholder="Date"></td>
-                        <td><input type="submit" id="soumettre" name="soumettre" value="Envoyer les notes"></td>
-                        -->
                     </tr>
                 </tbody>
             </table>
-            
         </div>
+    </form>
 </body>
 </html>
