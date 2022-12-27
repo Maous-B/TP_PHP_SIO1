@@ -10,7 +10,7 @@
         $id_notes = array_combine($_POST['idEleve'], $_POST['noteEpreuve']);
         $commentaires = $_POST['commentaire'];
         foreach($id_notes as $id => $notes){
-            echo $id." est l'id de l'élève et la note est de ".$notes."<br>";
+            //echo $id." est l'id de l'élève et la note est de ".$notes."<br>";
             $REQUETE_SQL_FINAL_ENVOI_NOTES = "INSERT INTO 
             epreuve_ccf(DATE_EPREUVE, HEURE_CONVOCATION, DUREE_EPREUVE, NOTE_OBTENU, COEFFICIENT, COMMENTAIRE_EVALUATION, fk_clef_eleve, fk_id_ccf, fk_id_bts) 
             VALUES(:date_e, :heure_conv, :duree_e, :note_o, :coef, :com_eval, :fk_c_e, :fk_i_c, :fk_i_b);";
