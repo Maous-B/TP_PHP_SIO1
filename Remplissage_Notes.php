@@ -46,11 +46,9 @@
             $q->execute();
 
             $donnees = $q->fetchAll();
-            #var_dump($donnees);
 
             echo "<select name='epreuve_ccf[]' id='epreuve_ccf' >";
             foreach($donnees as $ligne){
-                #var_dump($ligne);
                 echo "<option value='".$ligne['CLEF_CCF']."'>".$ligne['CODE_CCF']." : ".$ligne['LIBELLE_CCF']."</option><BR>";
             }
             echo "</select>";
@@ -110,7 +108,7 @@
                         echo "<td><input type='number' name='noteEpreuve[]' min='0' max='20'</td>";
                         echo "<td><input type='text' name='commentaire[]' </td>";
                         echo "<td><input type='hidden' name='idEleve[]' value='".$ligne['CLEF_ELEVE']. "'></td>";
-                        echo "<td><input type='hidden' name='id_Bts[]' value='".$ligne['ID_BTS']. "'></td><br>";
+                        echo "<td><input type='hidden' name='idBts[]' value='".$ligne['ID_BTS']. "'></td><br>";
                     }
                 }
             ?>
