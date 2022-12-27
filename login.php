@@ -45,7 +45,7 @@
                 {
                     $message = "Mot de passe correct. Redirection en cours...";
                     echo "<script type='text/javascript'>alert('$message');</script>";
-                    header('Location: PageTableauNotes.php');
+                    header('Location: accueil.php');
                     exit;
                 }
                 else
