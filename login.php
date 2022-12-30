@@ -26,16 +26,18 @@
 </html>
 
 <?php
-
+    session_start();
     if(isset($_POST['soumettre'])){
         
         extract($_POST);
-        session_start(); 
 
         $adresse_mail = $_POST['adresse_mail'];
         $mot_de_passe = $_POST['mot_de_passe'];
-
+        
+        $_SESSION['add_mail'] = $adresse_mail;
+        
         if(!empty($adresse_mail) && !empty($mot_de_passe)){
+            
             include "./ConnexionMySQL.php";
             global $db;
 
