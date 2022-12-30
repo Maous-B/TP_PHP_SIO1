@@ -27,5 +27,10 @@
             $q_final->execute();
             $index++;
         }
+
+
+        
     }
+
+
 ?>
