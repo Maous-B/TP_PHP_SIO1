@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,12 +26,13 @@
 </html>
 
 <?php
+
     if(isset($_POST['soumettre'])){
         
         extract($_POST);
+        session_start(); 
 
         $adresse_mail = $_POST['adresse_mail'];
-        //$mot_de_passe = password_hash($_POST['mot_de_passe'], PASSWORD_ARGON2ID);
         $mot_de_passe = $_POST['mot_de_passe'];
 
         if(!empty($adresse_mail) && !empty($mot_de_passe)){
@@ -47,7 +50,7 @@
                     echo "<script type='text/javascript'>alert('$message');</script>";
                     header('Location: accueil.php');
                     exit;
-                }
+                }   
                 else
                 {
                     $message = "Mot de passe incorrect.";
