@@ -12,12 +12,10 @@
 
 
 -- Listage de la structure de la base pour epreuves_ccf
-DROP DATABASE IF EXISTS `epreuves_ccf`;
 CREATE DATABASE IF NOT EXISTS `epreuves_ccf` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `epreuves_ccf`;
 
 -- Listage de la structure de la table epreuves_ccf. candidat
-DROP TABLE IF EXISTS `candidat`;
 CREATE TABLE IF NOT EXISTS `candidat` (
   `CLEF_ELEVE` int(11) NOT NULL AUTO_INCREMENT,
   `NUMERO_ELEVE` varchar(50) DEFAULT NULL,
@@ -40,7 +38,6 @@ INSERT INTO `candidat` (`CLEF_ELEVE`, `NUMERO_ELEVE`, `NOM_CANDIDAT`, `PRENOM_CA
 /*!40000 ALTER TABLE `candidat` ENABLE KEYS */;
 
 -- Listage de la structure de la table epreuves_ccf. ccf
-DROP TABLE IF EXISTS `ccf`;
 CREATE TABLE IF NOT EXISTS `ccf` (
   `CLEF_CCF` int(11) NOT NULL AUTO_INCREMENT,
   `CODE_CCF` char(10) DEFAULT NULL,
@@ -61,7 +58,6 @@ INSERT INTO `ccf` (`CLEF_CCF`, `CODE_CCF`, `LIBELLE_CCF`, `fk_id_bts`) VALUES
 /*!40000 ALTER TABLE `ccf` ENABLE KEYS */;
 
 -- Listage de la structure de la table epreuves_ccf. epreuve_ccf
-DROP TABLE IF EXISTS `epreuve_ccf`;
 CREATE TABLE IF NOT EXISTS `epreuve_ccf` (
   `ID_EPREUVE` int(11) NOT NULL AUTO_INCREMENT,
   `DATE_EPREUVE` date DEFAULT NULL,
@@ -79,14 +75,13 @@ CREATE TABLE IF NOT EXISTS `epreuve_ccf` (
   KEY `fk_id_prof` (`fk_id_prof`),
   KEY `fk_id_ccf` (`fk_id_ccf`),
   KEY `fk_id_bts` (`fk_id_bts`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Listage des données de la table epreuves_ccf.epreuve_ccf : 7 rows
+-- Listage des données de la table epreuves_ccf.epreuve_ccf : 0 rows
 /*!40000 ALTER TABLE `epreuve_ccf` DISABLE KEYS */;
 /*!40000 ALTER TABLE `epreuve_ccf` ENABLE KEYS */;
 
 -- Listage de la structure de la table epreuves_ccf. filiere_bts
-DROP TABLE IF EXISTS `filiere_bts`;
 CREATE TABLE IF NOT EXISTS `filiere_bts` (
   `ID_BTS` int(11) NOT NULL AUTO_INCREMENT,
   `CODE_BTS` char(10) DEFAULT NULL,
@@ -104,7 +99,6 @@ INSERT INTO `filiere_bts` (`ID_BTS`, `CODE_BTS`, `LIBELLE_BTS`, `ANNEE_CONCERNEE
 /*!40000 ALTER TABLE `filiere_bts` ENABLE KEYS */;
 
 -- Listage de la structure de la table epreuves_ccf. professeurs
-DROP TABLE IF EXISTS `professeurs`;
 CREATE TABLE IF NOT EXISTS `professeurs` (
   `ID_PROF` int(11) NOT NULL AUTO_INCREMENT,
   `ID_NUMEN` varchar(15) CHARACTER SET utf8 NOT NULL,
